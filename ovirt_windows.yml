@@ -1,0 +1,72 @@
+---
+- name: oVirt Test
+  hosts: 192.168.0.31
+  connection: local
+  tasks:
+    - name: Create VM
+      ovirt_vms:
+        state: present
+        name: TestWordPress
+        cluster: Default
+        memory: 2GiB
+        cpu_cores: 2
+        cpu_sockets: 2
+        cpu_shares: 1024
+        type: server
+        operating_system: ubuntu_14_04
+        storage_domain: VM_Storage1
+        nics:
+          - name: nic1
+        auth:
+          url: https://192.168.0.31/ovirt-engine/api
+          username: admin@internal
+          insecure: True
+          password: '@R3birth!!'
+    - name: Create VM Disk
+      ovirt_disk:
+        format: cow
+        interface: virtio
+        name: TestWordPress_disk1
+        size: 100GiB
+        state: present
+        storage_domain: VM_Storage1
+        vm_name: TestWordPress
+        auth:
+          url: https://192.168.0.31/ovirt-engine/api
+          username: admin@internal
+          insecure: True
+          password: '@R3birth!!'
+    - name: Edit VM Network
+      ovirt_nics:
+        name: nic1
+        network: ovirtmgmt
+        profile: ovirtmgmt
+        state: plugged
+        vm: TestWordPress
+        auth:
+          url: https://192.168.0.31/ovirt-engine/api
+          username: admin@internal
+          insecure: True
+          password: '@R3birth!!'
+    - name: Configure Boot Device & ISO
+      ovirt_vms:
+        name: TestWordPress
+        cd_iso: ubuntu-14.04.5-server-amd64.iso
+        boot_devices:
+          - cdrom
+          - hd
+        state: stopped
+        auth:
+          url: https://192.168.0.31/ovirt-engine/api
+          username: admin@internal
+          insecure: True
+          password: '@R3birth!!'
+    - name: Start VM
+      ovirt_vms:
+        state: running
+        name: TestWordPress
+        auth:
+          url: https://192.168.0.31/ovirt-engine/api
+          username: admin@internal
+          insecure: True
+          password: '@R3birth!!'
