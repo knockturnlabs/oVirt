@@ -1,0 +1,9 @@
+---
+- name: Take oVirt Engine Backup
+  hosts: '{{ host_name }}'
+  gather_facts: no
+
+  tasks:
+    - name: Take oVirt Engine Backup
+      command: engine-backup --mode=backup --file=engine_backup --log=engine_backup_log
+
