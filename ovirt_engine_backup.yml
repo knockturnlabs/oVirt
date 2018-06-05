@@ -2,7 +2,6 @@
 - name: Take oVirt Engine Backup
   hosts: '{{ host_name }}'
   gather_facts: no
-  connection: local
 
   tasks:
     - name: Take oVirt Engine Backup
