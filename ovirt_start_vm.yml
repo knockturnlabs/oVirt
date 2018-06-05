@@ -6,14 +6,17 @@
   vars:
 #    ovirt_vm_state:
 #    ovirt_vm_name:
-
+#    ovirt_url:
+#    ovirt_username:
+#    ovirt_insecure:
+#    ovirt_password:
 
   tasks:
     - name: Start/Stop/Restart VM
       ovirt_vms:
         state: '{{ ovirt_vm_state }}'
         name: '{{ ovirt_vm_name }}'
-        auth:
+#        auth:
 #          url: https://192.168.0.31/ovirt-engine/api
 #          username: admin@internal
 #          insecure: True
