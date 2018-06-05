@@ -1,7 +1,22 @@
 ---
-- name: oVirt Test
+- name: oVirt - Create New VM
+#  hosts: '{{ host_name }}'
   hosts: 192.168.0.31
   connection: local
+  gather_facts: no
+  vars:
+    ovirt_vm_state:
+    ovirt_vm_name:
+    ovirt_cluster_name:
+    ovirt_vm_memory:
+    ovirt_vm_cpu_cores:
+    ovirt_vm_cpu_sockets:
+    ovirt_vm_type:
+    ovirt_vm_os:
+    ovirt_vm_storage_domain:
+    ovirt_vm_nic:
+
+
   tasks:
     - name: Create VM
       ovirt_vms:

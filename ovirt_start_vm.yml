@@ -1,0 +1,20 @@
+---
+- name: oVirt - Start/Stop/Restart VM
+  hosts: '{{ host_name }}'
+  connection: local
+  gather_facts: no
+  vars:
+#    ovirt_vm_state:
+#    ovirt_vm_name:
+
+
+  tasks:
+    - name: Start/Stop/Restart VM
+      ovirt_vms:
+        state: '{{ ovirt_vm_state }}'
+        name: '{{ ovirt_vm_name }}'
+        auth:
+#          url: https://192.168.0.31/ovirt-engine/api
+#          username: admin@internal
+#          insecure: True
+#          password: '@R3birth!!'
