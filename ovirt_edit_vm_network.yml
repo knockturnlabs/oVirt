@@ -1,0 +1,21 @@
+---
+- name: oVirt - Edit VM Network
+  hosts: '{{ host_name }}'
+  connection: local
+  gather_facts: no
+  vars:
+#    ovirt_vm_name:
+#    ovirt_vm_network:
+#    ovirt_vm_network_profile:
+#    ovirt_vm_nic_state:
+#    ovirt_vm_nic:
+
+
+  tasks:
+    - name: Edit Network
+      ovirt_nics:
+        name: '{{ ovirt_vm_nic }}'
+        network: '{{ ovirt_vm_network }}'
+        profile: '{{ ovirt_vm_network_profile }}'
+        state: '{{ ovirt_vm_nic_state }}'
+        vm: '{{ ovirt_vm_name }}'
