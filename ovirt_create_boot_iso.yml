@@ -1,0 +1,17 @@
+me: oVirt - Create Boot Device & Set ISO
+  hosts: '{{ host_name }}'
+  connection: local
+  gather_facts: no
+  vars:
+#    ovirt_vm_name:
+#    ovirt_vm_iso:
+
+  tasks:
+    - name: Configure Boot Device & ISO
+      ovirt_vms:
+        name: '{{ ovirt_vm_name }}'
+        cd_iso: '{{ ovirt_vm_iso }}'
+        boot_devices:
+          - cdrom
+          - hd
+        state: stopped
