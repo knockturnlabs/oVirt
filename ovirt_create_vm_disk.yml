@@ -1,0 +1,25 @@
+---
+- name: oVirt - Create VM Disk
+  hosts: '{{ host_name }}'
+  connection: local
+  gather_facts: no
+  vars:
+#    ovirt_vm_name:
+#    ovirt_vm_disk_format:
+#    ovirt_vm_disk_interface:
+#    ovirt_vm_disk_name:
+#    ovirt_vm_disk_size:
+#    ovirt_vm_disk_state:
+#    ovirt_vm_storage_domain:
+
+
+  tasks:
+    - name: Create VM Disk
+      ovirt_disk:
+        format: '{{ ovirt_vm_disk_format }}'
+        interface: '{{ ovirt_vm_disk_interface }}'
+        name: '{{ ovirt_vm_disk_name }}'
+        size: '{{ ovirt_vm_disk_size }}'
+        state: '{{ ovirt_vm_disk_state }}'
+        storage_domain: '{{ ovirt_vm_storage_domain }}'
+        vm_name: '{{ ovirt_vm_name }}'

@@ -1,5 +1,5 @@
 ---
-- name: oVirt - Create New VM
+- name: oVirt - Create VM
   hosts: '{{ host_name }}'
   connection: local
   gather_facts: no
@@ -17,7 +17,7 @@
 
 
   tasks:
-    - name: Create oVirt VM
+    - name: Create VM
       ovirt_vms:
         state: '{{ ovirt_vm_state }}'
         name: '{{ ovirt_vm_name }}'
