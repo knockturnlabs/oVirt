@@ -1,0 +1,32 @@
+---
+- name: oVirt - Create New VM
+  hosts: '{{ host_name }}'
+  connection: local
+  gather_facts: no
+  vars:
+#    ovirt_vm_state:
+#    ovirt_vm_name:
+#    ovirt_cluster_name:
+#    ovirt_vm_memory:
+#    ovirt_vm_cpu_cores:
+#    ovirt_vm_cpu_sockets:
+#    ovirt_vm_type:
+#    ovirt_vm_os:
+#    ovirt_vm_storage_domain:
+#    ovirt_vm_nic:
+
+
+  tasks:
+    - name: Create oVirt VM
+      ovirt_vms:
+        state: '{{ ovirt_vm_state }}'
+        name: '{{ ovirt_vm_name }}'
+        cluster: '{{ ovirt_vm_cluster }}'
+        memory: '{{ ovirt_vm_memory }}'
+        cpu_cores: '{{ ovirt_vm_cpu_cores }}'
+        cpu_sockets: '{{ ovirt_vm_cpu_sockets }}'
+        type: '{{ ovirt_vm_type }}'
+        operating_system: '{{ ovirt_vm_os }}'
+        storage_domain: '{{ ovirt_vm_storage_domain }}'
+        nics:
+          - name: '{{ ovirt_vm_nic }}'
